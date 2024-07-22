@@ -1,14 +1,21 @@
 import React from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const mapContainerStyle = {
-  width: "1280px",
+  width: "300px",
   height: "620px",
 };
 
-const center = {
-  lat: 11.562108,
-  lng: 104.888535,
+// My current location
+const currentLocation = {
+  lat: 11.578268759952971,
+  lng: 104.90178553000196,
+};
+
+// Destination location
+const destinationLocation = {
+  lat: 11.551841,
+  lng: 104.900934,
 };
 
 function MyComponent() {
@@ -18,11 +25,12 @@ function MyComponent() {
         <div id="map" style={mapContainerStyle}>
           <GoogleMap
             mapContainerStyle={mapContainerStyle}
-            center={center}
-            zoom={10}
+            center={currentLocation}
+            zoom={12}
           >
-            {/* Child components, such as markers, info windows, etc. */}
-            <></>
+            {/* Markers for current and destination locations */}
+            <Marker position={currentLocation} label="Current Location" />
+            <Marker position={destinationLocation} label="Destination" />
           </GoogleMap>
         </div>
       </LoadScript>
